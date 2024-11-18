@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+.category-btn {
+    transition: all 0.3s ease;
+}
+
+#verseDisplay {
+    transition: all 0.3s ease;
+}
+
+/* Floating verse display animation */
+#verseDisplay:not(.hidden) {
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover a free online Bible verse generator with inspiring scriptures on love, faith, hope, and more. Find a verse that speaks to you today!">
+    <meta name="keywords" content="Bible, Bible verses, random Bible verses, love, faith, hope, family, inspirational scriptures, Christian quotes">
+    <title>Random Bible Verse</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Verse Display -->
+    <div
+      id="verseDisplay"
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-2xl mx-auto px-4 hidden z-50"
+    >
+      <div
+        class="bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-gray-100"
+      >
+        <button
+          id="closeVerse"
+          class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+        >
+          <img
+            src="https://api.iconify.design/ph:x-light.svg"
+            class="w-6 h-6"
+            alt="Close"
+          />
+        </button>
+        <img
+          src="https://api.iconify.design/ph:quotes.svg"
+          class="w-8 h-8 mb-4 mx-auto opacity-50"
+          alt="Quotes"
+        />
+        <p id="verse" class="text-xl italic"></p>
+        <p id="reference" class="mt-4 text-gray-600 font-semibold"></p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md z-50">
+      <nav class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="#" class="text-2xl font-semibold flex items-center gap-2">
+            <img
+              src="https://api.iconify.design/ph:book-open-text-light.svg"
+              class="w-8 h-8"
+              alt="Bible Icon"
+            />
+            Bible Verse Generator
+          </a>
+          <div class="hidden md:flex space-x-8">
+            <a href="#how-it-works" class="hover:text-gray-600">How It Works</a>
+            <a href="#categories" class="hover:text-gray-600">Categories</a>
+            <a href="#contact" class="hover:text-gray-600">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=2070')] bg-cover bg-center opacity-10"
+      ></div>
+      <div class="container mx-auto text-center relative">
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-100 rounded-full filter blur-3xl opacity-30 -z-10"
+        ></div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-8">Random Bible Verse</h1>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          Get Inspired by the Word of God <br />One Verse at a Time.
+        </p>
+        <button
+          id="generateVerse"
+          class="bg-black text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2 mx-auto"
+        >
+          <img
+            src="https://api.iconify.design/ph:sparkle-light.svg?color=white"
+            class="w-6 h-6"
+            alt="Generate"
+          />
+          Generate Verse
+        </button>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Themed Inspiration</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="anger"
+          >
+            <img
+              src="https://api.iconify.design/ph:fire-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-orange-500"
+              alt="Anger"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Anger</h3>
+            <p class="text-gray-600">
+              Find peace and control in moments of anger
+            </p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="hope"
+          >
+            <img
+              src="https://api.iconify.design/ph:sun-horizon-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-yellow-500"
+              alt="Hope"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Hope</h3>
+            <p class="text-gray-600">Discover hope in times of darkness</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="depression"
+          >
+            <img
+              src="https://api.iconify.design/ph:heart-break-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-purple-500"
+              alt="Depression"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Depression</h3>
+            <p class="text-gray-600">Find comfort in times of darkness</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="peace"
+          >
+            <img
+              src="https://api.iconify.design/ph:leaf-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-blue-500"
+              alt="Peace"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Peace</h3>
+            <p class="text-gray-600">Experience God's perfect peace</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="fear"
+          >
+            <img
+              src="https://api.iconify.design/ph:shield-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-red-500"
+              alt="Fear"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Fear</h3>
+            <p class="text-gray-600">Overcome fear with faith</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="stress"
+          >
+            <img
+              src="https://api.iconify.design/ph:brain-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-teal-500"
+              alt="Stress"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Stress</h3>
+            <p class="text-gray-600">Find relief from life's pressures</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="patience"
+          >
+            <img
+              src="https://api.iconify.design/ph:hourglass-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-amber-500"
+              alt="Patience"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Patience</h3>
+            <p class="text-gray-600">Grow in patience and endurance</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="pride"
+          >
+            <img
+              src="https://api.iconify.design/ph:crown-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-yellow-600"
+              alt="Pride"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Pride</h3>
+            <p class="text-gray-600">Learn humility and wisdom</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="doubt"
+          >
+            <img
+              src="https://api.iconify.design/ph:question-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-gray-500"
+              alt="Doubt"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Doubt</h3>
+            <p class="text-gray-600">Strengthen your faith</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="joy"
+          >
+            <img
+              src="https://api.iconify.design/ph:smiley-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-green-500"
+              alt="Joy"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Joy</h3>
+            <p class="text-gray-600">Celebrate God's goodness</p>
+          </button>
+          <button
+            class="category-btn bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+            data-category="jealousy"
+          >
+            <img
+              src="https://api.iconify.design/ph:eye-light.svg"
+              class="w-12 h-12 mb-4 mx-auto text-emerald-500"
+              alt="Jealousy"
+            />
+            <h3 class="text-2xl font-semibold mb-4">Jealousy</h3>
+            <p class="text-gray-600">Find contentment and peace</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=2070')] bg-cover bg-center opacity-5"
+      ></div>
+      <div class="container mx-auto px-6 relative">
+        <h2 class="text-4xl font-bold text-center mb-16">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="text-center bg-white/50 backdrop-blur-sm p-8 rounded-2xl">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="text-3xl font-bold text-blue-600">1</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Choose Your Theme</h3>
+            <p class="text-gray-600">
+              Select a category that resonates with your current needs
+            </p>
+          </div>
+          <div class="text-center bg-white/50 backdrop-blur-sm p-8 rounded-2xl">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="text-3xl font-bold text-blue-600">2</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Generate Verse</h3>
+            <p class="text-gray-600">
+              One click to reveal a random Bible verse and be inspired.
+            </p>
+          </div>
+          <div class="text-center bg-white/50 backdrop-blur-sm p-8 rounded-2xl">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="text-3xl font-bold text-blue-600">3</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Find Inspiration</h3>
+            <p class="text-gray-600">
+              Reflect on the wisdom and apply it to your life
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      id="contact"
+      class="bg-black text-white py-12 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=2070')] bg-cover bg-center opacity-10"
+      ></div>
+      <div class="container mx-auto px-6 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4 flex items-center gap-2">
+              <img
+                src="https://api.iconify.design/ph:book-open-text-light.svg?color=white"
+                class="w-8 h-8"
+                alt="Bible Icon"
+              />
+              Bible
+            </h3>
+            <p class="text-gray-400">
+              Bringing divine wisdom to your daily life
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Contact</h3>
+            <p class="text-gray-400 flex items-center gap-2">
+              <img
+                src="https://api.iconify.design/ph:envelope-light.svg?color=gray"
+                class="w-5 h-5"
+                alt="Email"
+              />
+              david@666sdk.com
+            </p>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+          <p class="text-gray-400">&copy; 2024 Bible. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
